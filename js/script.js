@@ -1,116 +1,58 @@
+import {
+  counterDecrement,
+  counterIncrement,
+  counterSetZero,
+} from "../src/Redux/actionTypes.js";
 
-// Counter Action 
+import {
+  incrementAction,
+  decrementAction,
+  setZeroAction,
+} from "../src/Redux/actionCreator.js";
 
-let incrementAction = {
-    type:"incremented",
-}
+const decBtn = document.querySelector("#dec");
+const ressetBtn = document.querySelector("#reset");
+const incBtn = document.querySelector("#inc");
 
-let decrementAction = {
-    type :"decrement" ,
-}
+const numbElem = document.querySelector("#num");
 
+// Declare Counter Reducer
 
-function counterReducer (action) {
-    switch (action.type) {
-        case 'increment' : {
-            return newStore
-        }
-        case 'decremet' : {
-            return newStore
-        }
+const counterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case counterIncrement: {
+      return state + 1;
     }
-}
-
-
-
-
-
-
-// Todolist actions 
-
-let createTodoAction = {
-    type:"ADD_TODO"
-}
-
-let removeTodoAction = {
-    type:"REMOVE_TODO"
-}
-
-let updateTodoAction = {
-    type:"UPDATE_TODO"
-}
-
-let getTodosAction = {
-    type : "GET_TODOS"
-}
-
-function todosReducer (action) {
-    switch(action.type) {
-        case "ADD_TODO" : {
-            return newStore
-        }
-        case "REMOVE_TODO" : {
-            return newStore
-        }
-        case "UPDATE_TODO" : {
-            return newStore
-        }
-        case "GET_TODOS" : {
-            return newStore
-        }
-        default : {
-            return store ;
-        }
-
+    case counterDecrement: {
+      return state - 1;
     }
-}
+    case counterSetZero: {
+      return state - state;
+    }
+    default: {
+      return state;
+    }
+  }
+};
 
+const store = Redux.createStore(counterReducer);
 
+console.log(store);
 
+decBtn.addEventListener("click", () => {
+  store.dispatch(decrementAction());
+  console.log(store.getState());
+  numbElem.innerHTML = store.getState();
+});
 
+ressetBtn.addEventListener("click", () => {
+  store.dispatch(setZeroAction());
+  console.log(store.getState());
+  numbElem.innerHTML = store.getState();
+});
 
-
-let counterStore = 0 ;
-
-// Todolist store 
-
-let todolistStore = [
-    {id:1 , title:"learn0" , createdAt : "1402-2-9" , isDO:false},
-    {id:1 , title:"learn0" , createdAt : "1402-2-9" , isDO:false}
-]
-
-
-// Shop Store 
-
-let shopStore = {
-    products:[] ,
-    articles : [] ,
-    users : [] ,
-    admins : []
-}
-
-
-// shop Reducers = these are sum ok ? 
-// هر نوع دیتا ردیوسر خودشو داره
-
-function productReducer (action) {
-
-}
-
-function articleReducer (action) {
-    
-}
-
-function ticketReducer (action) {
-    
-}
-
-function usersReducer (action) {
-    
-}
-
-function adminReducer (action) {
-    
-}
-
-console.log(Redux)
+incBtn.addEventListener("click", () => {
+  store.dispatch(incrementAction());
+  console.log(store.getState());
+  numbElem.innerHTML = store.getState();
+});
