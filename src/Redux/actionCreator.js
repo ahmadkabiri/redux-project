@@ -1,22 +1,42 @@
-import { counterIncrement , counterDecrement , counterSetZero } from "./actionTypes.js"
+import {
+  addTodo,
+  removeTodo,
+  doTodo,
+  getAllTodos
+} from "./actionTypes.js";
 
-
-const incrementAction = () => {
-    return {type:counterIncrement}
+function addTodoAction(value) {
+  return {
+    type: addTodo,
+    title: value,
+  };
 }
 
-const decrementAction = () => {
-    return {type:counterDecrement}
+function removeTodoAction(id) {
+  return {
+    type: removeTodo,
+    id,
+  };
 }
 
-const setZeroAction = () => {
-    return {type:counterSetZero}
+function doTodoAction(id) {
+  return {
+    type: doTodo,
+    id,
+  };
+}
+
+function getAllTodosAction () {
+    return {
+        type : getAllTodos
+    }
 }
 
 
-export {incrementAction,decrementAction,setZeroAction}
 
-
-
-
-
+export {
+  addTodoAction,
+  removeTodoAction,
+  doTodoAction,
+  getAllTodosAction
+};

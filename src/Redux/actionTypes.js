@@ -1,5 +1,6 @@
-const counterIncrement = "INCREMENT" 
-const counterDecrement = "DECREMENT"
-const counterSetZero = "SET_ZERO"
+const getAllTodos = "GET_ALL_TODOS";
+const addTodo = "ADD_TODO";
+const removeTodo = "REEMOVE_TODO";
+const doTodo = "DO_TODO";
 
-export {counterDecrement,counterIncrement,counterSetZero}
+export { getAllTodos, addTodo, removeTodo, doTodo };

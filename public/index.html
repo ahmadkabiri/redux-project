@@ -3,45 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redux - Tailwind</title>
-    <link rel="stylesheet" href="./build/tailwind.css" />
+    <title>Redux</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="./build/tailwind.css" /> -->
+    <link rel="stylesheet" href="./build/style.css">
   </head>
-  <body class="bg-red-100 flex justify-center items-center w-full h-screen">
-    <div
-      class="bg-blue-400 w-72 flex flex-col justify-between items-center"
-    >
-      <div class="bg-green-400 h-8 w-full"></div>
-      <div
-      id="num"
-        class="bg-black text-white text-5xl w-full flex justify-center items-center h-32"
-      >
-        0
+  <body>
+    <header>
+      <h1>Sabzlearn To Do List</h1>
+    </header>
+    <form action="">
+      <input type="text" class="todo-input" />
+      <button class="todo-button" type="submit">
+        <i class="fas fa-plus-circle fa-lg"></i>
+      </button>
+      <div class="select">
+        <select name="todos" class="filter-todo">
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="incomplete">Incomplete</option>
+        </select>
       </div>
-      <div class="flex items-center">
-        <button id="dec" class="text-white bg-red-300 px-8 text-3xl py-1 mx-2 " >-</button>
-        <button id="reset" class="text-white bg-red-300 px-8 text-3xl py-2 mx-2 ">
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </span>
-        </button>
-        <button id="inc" class="text-white bg-red-300 px-8 text-3xl py-1 mx-2 ">+</button>
-      </div>
-      <div class="bg-black w-full h-8"></div>
-      <div class="bg-blue-900 w-full h-8"></div>
+    </form>
+
+    <div class="todo-container">
+      <ul class="todo-list">
+        <!-- <div class="todo">
+          <li class="todo-item">learn js</li>
+          <button class="complete-btn">
+            <i class="fas fa-check-circle"></i>
+          </button>
+          <button class="trash-btn">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div> -->
+      </ul>
     </div>
+
 
     <script src="/js/redux.js"></script>
     <script src="/js/script.js" type="module"></script>
