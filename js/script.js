@@ -75,7 +75,10 @@ function todolistReducer(state = [], action) {
 
 // create store
 
-const store = Redux.createStore(todolistReducer);
+// const store = Redux.createStore(todolistReducer);
+
+const store = createStore(todolistReducer);
+
 
 console.log(store);
 
