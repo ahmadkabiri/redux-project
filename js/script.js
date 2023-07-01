@@ -1,58 +1,29 @@
-import {
-  counterDecrement,
-  counterIncrement,
-  counterSetZero,
-} from "../src/Redux/actionTypes.js";
+import productReducer from './../src/Redux/Products/reducer.js'
+import articlesReducer from './../src/Redux/Articles/reducer.js'
+import commentsReducer from './../src/Redux/Comments/reducer.js'
 
-import {
-  incrementAction,
-  decrementAction,
-  setZeroAction,
-} from "../src/Redux/actionCreator.js";
+import {addProductAction} from "./../src/Redux/Products/actionCreators.js"
 
-const decBtn = document.querySelector("#dec");
-const ressetBtn = document.querySelector("#reset");
-const incBtn = document.querySelector("#inc");
+const store = Redux.createStore(Redux.combineReducers({
+  products: productReducer,
+  articles : articlesReducer ,
+  comments : commentsReducer
+}))
 
-const numbElem = document.querySelector("#num");
 
-// Declare Counter Reducer
+console.log(store.getState())
 
-const counterReducer = (state = 0, action) => {
-  switch (action.type) {
-    case counterIncrement: {
-      return state + 1;
-    }
-    case counterDecrement: {
-      return state - 1;
-    }
-    case counterSetZero: {
-      return state - state;
-    }
-    default: {
-      return state;
-    }
-  }
-};
 
-const store = Redux.createStore(counterReducer);
+store.subscribe(() => console.log(`store updated => ${store.getState()}`))
 
-console.log(store);
+store.dispatch(addProductAction({id:1 , title : "hi" , price : 90}))
+store.dispatch(addProductAction({id:1 , title : "hi" , price : 90}))
+store.dispatch(addProductAction({id:1 , title : "hi" , price : 90}))
+store.dispatch(addProductAction({id:1 , title : "hi" , price : 90}))
+store.dispatch(addProductAction({id:1 , title : "hi" , price : 90}))
+ 7
 
-decBtn.addEventListener("click", () => {
-  store.dispatch(decrementAction());
-  console.log(store.getState());
-  numbElem.innerHTML = store.getState();
-});
 
-ressetBtn.addEventListener("click", () => {
-  store.dispatch(setZeroAction());
-  console.log(store.getState());
-  numbElem.innerHTML = store.getState();
-});
 
-incBtn.addEventListener("click", () => {
-  store.dispatch(incrementAction());
-  console.log(store.getState());
-  numbElem.innerHTML = store.getState();
-});
+console.log(store.getState())
+
