@@ -14,11 +14,11 @@ const store = Redux.createStore(
   Redux.applyMiddleware(logger)
 );
 
-console.log(store.getState());
+// console.log(store.getState());
 
-store.subscribe(() => console.log(`store updated => ${store.getState()}`));
+// store.subscribe(() => console.log(`store updated => ${store.getState()}`));
 
 store.dispatch(addProductAction({ id: 1, title: "hi", price: 90 }));
 
 
-console.log(store.getState());
+// console.log(store.getState());

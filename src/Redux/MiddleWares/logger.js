@@ -1,22 +1,12 @@
+const logger =
+  (store) =>
+  (next) =>
+  (action) => {
+    console.log("Store:", store);
+    console.log("Next:", next);
+    console.log("Action:", action);
 
-// const logger = (store,next,action) => {
+    next(action);
+  };
 
-// }
-
-const logger = store => next => action => {
-    console.log("Store:" , store ) ;
-    console.log("Next:" , next ) ;
-    console.log("Action:" , action ) ;
-}
-
-export default logger ; 
-
- 
-
-
-
-
-
-
-
-
+export default logger;
