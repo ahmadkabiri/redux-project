@@ -1,26 +1,24 @@
-// function sum (a,b) {
-//   return a + b ;
-// }
+import productReducer from "./../src/Redux/Products/reducer.js";
+import articlesReducer from "./../src/Redux/Articles/reducer.js";
+import commentsReducer from "./../src/Redux/Comments/reducer.js";
 
-function sum(a) {
-  return function (b) {
-    return function (c) {
-      return a + b + c;
-    };
-  };
-}
+import { addProductAction } from "./../src/Redux/Products/actionCreators.js";
+import logger from "../src/Redux/MiddleWares/logger.js";
 
-console.log(sum(12)(8)(10));
+const store = Redux.createStore(
+  Redux.combineReducers({
+    products: productReducer,
+    articles: articlesReducer,
+    comments: commentsReducer,
+  }),
+  Redux.applyMiddleware(logger)
+);
 
-// N  => 1
+console.log(store.getState());
 
-// const sum1 = (a, b, c) => {
-//   return (b) => {
-//     return (c) => {
-//       return a+b+c
-//     };
-//   };
-// };
+store.subscribe(() => console.log(`store updated => ${store.getState()}`));
 
-const sum1 = (a) => (b) => (c) => a + b + c;
-console.log(sum1(12)(8)(10));
+store.dispatch(addProductAction({ id: 1, title: "hi", price: 90 }));
+
+
+console.log(store.getState());

@@ -1,26 +1,21 @@
-import { addProduct,removeProduct } from "./actionType.js"
+import { addProduct, removeProduct } from "./actionType.js";
 
-
-
- const productReducer = (state=[],action) => {
-
-    switch(action.type) {
-        case addProduct : {
-            let newProduct = action.payload 
-            return [...state,newProduct]
-
-        }
-
-        case removeProduct : {
-            const newState = [...state].filter(product => product.id !==action.id)
-            return newState
-
-        }
-        default : {
-            return state ;
-        }
+const productReducer = (state = [], action) => {
+  console.log("product reducer run !!");
+  switch (action.type) {
+    case addProduct: {
+      let newProduct = action.payload;
+      return [...state, newProduct];
     }
 
-}
+    case removeProduct: {
+      const newState = [...state].filter((product) => product.id !== action.id);
+      return newState;
+    }
+    default: {
+      return state;
+    }
+  }
+};
 
-export default productReducer
+export default productReducer;
